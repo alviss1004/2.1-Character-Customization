@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Avatar from "./components/Avatar";
 import PartList from "./components/PartList";
+import "./App.css";
 
 const total = {
   body: 17,
@@ -27,6 +28,23 @@ function App() {
   const [clothing2, setClothing2] = useState(1);
   const [clothing3, setClothing3] = useState(1);
 
+  const randomize = () => {
+    setBody(Math.floor(Math.random() * total.body));
+    setEye(Math.floor(Math.random() * total.eyes));
+    setHair(Math.floor(Math.random() * total.hair));
+    setMouth(Math.floor(Math.random() * total.mouth));
+    setEyebrows(Math.floor(Math.random() * total.eyebrows));
+    setHat(Math.floor(Math.random() * total.hat));
+    setGlasses(Math.floor(Math.random() * total.glasses));
+    setClothing1(Math.floor(Math.random() * total.clothing1));
+    setClothing2(Math.floor(Math.random() * total.clothing2));
+    setClothing3(Math.floor(Math.random() * total.clothing3));
+  };
+
+  useEffect(() => {
+    randomize();
+  }, []);
+
   return (
     <>
       <h1
@@ -44,31 +62,20 @@ function App() {
           width: "50%",
           borderBottom: "4px solid rgba(255, 41, 41, 0.555)",
           margin: "auto",
+          marginBottom: 5,
         }}
       ></div>
       <div
         className="container"
         style={{
-          width: "60%",
+          maxWidth: "1200px",
           margin: "auto",
           display: "flex",
           justifyContent: "center",
           gap: 20,
         }}
       >
-        <div
-          className="avatarContainer"
-          style={{
-            width: "100%",
-            height: "100%",
-            border: "8px solid #A3E79C",
-            borderRadius: "40px",
-            padding: "50px",
-            position: "sticky",
-            backgroundColor: "#FFF",
-            top: "25%",
-          }}
-        >
+        <div className="avatar-container">
           <Avatar
             bodyIndex={body}
             eyeIndex={eye}
@@ -81,6 +88,11 @@ function App() {
             clothing2Index={clothing2}
             clothing3Index={clothing3}
           />
+          <div style={{ textAlign: "center" }}>
+            <button onClick={randomize} className="button">
+              Randomize
+            </button>
+          </div>
         </div>
         <div
           className="partListContainer"
@@ -160,6 +172,8 @@ function App() {
             path="clothes/layer_3"
             method={setClothing3}
             selected={clothing3}
+            scale={2}
+            top={-30}
           />
         </div>
       </div>

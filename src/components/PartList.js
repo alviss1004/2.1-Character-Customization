@@ -1,6 +1,6 @@
 import React from "react";
 
-function PartList({ path, total, method, selected }) {
+function PartList({ path, total, method, selected, scale = 1, top = 0 }) {
   let parts = [];
   for (let i = 1; i <= total; i++) {
     parts.push(
@@ -27,6 +27,11 @@ function PartList({ path, total, method, selected }) {
           alt={`${path}${i}`}
           width="60px"
           height="55px"
+          style={{
+            transform: `scale(${scale})`,
+            position: "relative",
+            top,
+          }}
         />
       </div>
     );
@@ -41,7 +46,7 @@ function PartList({ path, total, method, selected }) {
         borderRadius: 10,
         gap: 15,
         padding: 18,
-        backgroundColor: "#FFD9E5",
+        backgroundColor: "#DADADA",
       }}
     >
       {parts}

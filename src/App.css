@@ -11,7 +11,49 @@ h2 {
   background-color: #fae2c6;
 }
 
-.part:hover {
+.avatar-container {
+  width: 260px;
+  height: 280px;
+  border: 8px solid #a3e79c;
+  border-radius: 40px;
+  padding: 50px;
+  position: sticky;
+  background-color: #fff;
+  top: 25%;
+}
+
+@media screen and (max-width: 800px) {
+  .partList {
+    max-width: 700px;
+  }
+
+  .container {
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+  }
+
+  .avatar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    gap: 20;
+  }
+  .button {
+    position: relative;
+    top: 40px;
+  }
+}
+
+.button {
+  background-color: #33cdbc;
+  border: none;
+  border-radius: 15px;
+  padding: 10px;
+  color: black;
+  font-weight: 700;
+  text-transform: uppercase;
   cursor: pointer;
-  background-color: red;
+  transition-duration: 0.2s;
 }
